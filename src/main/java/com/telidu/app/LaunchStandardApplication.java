@@ -1,3 +1,5 @@
+package com.telidu.app;
+
 import org.hibernate.cfg.Configuration;
 import jakarta.persistence.EntityExistsException;
 import org.hibernate.HibernateException;
@@ -19,9 +21,9 @@ public class LaunchStandardApplication {
  sessionFactory = config.buildSessionFactory();
  session = sessionFactory.openSession();
  Student student = new Student();
- student.setsId(134);
- student.setsName("Arjun");
- student.setsCity("Ballia");
+ student.setsId(1);
+ student.setsName("Preetham");
+ student.setsCity("Hyderabad");
  try {
 	 transaction=session.beginTransaction();
 	 session.persist(student);
@@ -33,6 +35,16 @@ public class LaunchStandardApplication {
  }
  catch(Exception e) {
 	 e.printStackTrace();
+ }
+ finally {
+	 if(flag==true) {
+		 transaction.commit();
+	 }
+	 else {
+		 transaction.rollback();
+	 }
+	 session.close();
+	 sessionFactory.close();
  }
  
  }
