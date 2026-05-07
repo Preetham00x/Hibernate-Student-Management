@@ -74,18 +74,22 @@ public class LaunchStandardApplication {
         Transaction transaction = session.beginTransaction();
 
         // Fetch existing record
-        Student student = session.get(Student.class, 1);
-
+        Student student = new Student();
         if (student != null) {
 
             // Change values
+        	student.setsId(1);
             student.setsName("Harshith");
             student.setsCity("Bandlaguda");
-
+            //update
+            session.update(student);
             System.out.println("Record updated successfully");
             System.out.println("id :"+student.getsId());
             System.out.println("name :"+student.getsName());
             System.out.println("city :" +student.getsCity());
+            //deleting record
+//            session.remove(student);
+//            System.out.println("record successfully deleted");
 
         } else {
             System.out.println("Record not found");
