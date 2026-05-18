@@ -87,6 +87,7 @@ public class LaunchStandardApplication {
             System.out.println("id :"+student.getsId());
             System.out.println("name :"+student.getsName());
             System.out.println("city :" +student.getsCity());
+            session.merge(null);
             //deleting record
 //            session.remove(student);
 //            System.out.println("record successfully deleted");
